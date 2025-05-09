@@ -30,5 +30,4 @@ client = RESTClient("j0ipMPp_4w_LHhIFGJxd0Un8s_AE2FLQ") # hardcoded api_key is u
 
 stock = client.get_daily_open_close_agg(args.name, "2025-02-07")
 
-print(type(stock))
-print(stock.close)
+print("open price ->",stock.open, " \nclose price ->", stock.close, "\nhigh price ->", stock.high, "\nlow price->", stock.low)
