@@ -3,6 +3,7 @@ import sys
 from polygon import RESTClient
 import json
 from utils.env import getClient
+from datetime import date
 
 #using sys
 # n = len(sys.argv)
@@ -15,7 +16,11 @@ from utils.env import getClient
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("name", type=str, help="ticker name")
+#parser.add_argument("name", type=str, help="ticker name")
+parser.add_argument("-t","--ticker", type=str, help="ticker name")
+parser.add_argument("-st","--start_date", type=str, help="start date")
+parser.add_argument("-ed","--end_date", type=str, help="end date", default=date.today())
+
 
 args = parser.parse_args()
 
@@ -26,7 +31,7 @@ args = parser.parse_args()
 
 #client = RESTClient("j0ipMPp_4w_LHhIFGJxd0Un8s_AE2FLQ") # hardcoded api_key is used
 #client = RESTClient()  # POLYGON_API_KEY environment variable is used
-
-stock = getClient().get_daily_open_close_agg(args.name, "2025-02-07")
+print("args ->", args)
+stock = getClient().get_daily_open_close_agg(args.ticker, "2025-05-01")
 print("ticker ->", stock)
 print("open price ->",stock.open, " \nclose price ->", stock.close, "\nhigh price ->", stock.high, "\nlow price->", stock.low)
