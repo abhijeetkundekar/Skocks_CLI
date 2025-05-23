@@ -5,7 +5,7 @@ import json
 from utils.env import getClient
 from api.stockapi import list_aggs, getAllTickers
 from datetime import date
- import PrettyTable
+from prettytable import PrettyTable
 
 #using sys
 # n = len(sys.argv)
